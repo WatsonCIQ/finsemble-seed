@@ -119,8 +119,9 @@
 		},
 		"WPFExample": {
 			"window": {
-				"id": "Notepad",
+				"id": "WPFExample",
 				"path": "C:\\Users\\Erik\\Downloads\\Debug.exe",
+				"windowType": "native",
 				"url": "",
 				"defaultHeight": 600,
 				"autoShow": true,
