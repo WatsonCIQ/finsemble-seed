@@ -120,9 +120,10 @@
 		"WPFExample": {
 			"window": {
 				"id": "WPFExample",
-				"path": "C:\\Users\\Erik\\Downloads\\Debug.exe",
+				"path": "C:\\Users\\Erik\\Desktop\\Debug\\WPFExample.exe",
 				"windowType": "native",
 				"url": "",
+				"arguments": "iac=true serverAddress=wss://localhost.chartiq.com:3376",
 				"defaultHeight": 600,
 				"autoShow": true,
 				"alwaysOnTop": false,
