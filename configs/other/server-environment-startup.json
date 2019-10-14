@@ -1,28 +1,41 @@
 {
-    "development": {
-        "//serverPort": "Port number for your server.",
-        "serverPort": 3375,
-        "//serverConfig": "Url for your application's manifest.",
-        "serverConfig": "http://localhost:3375/configs/openfin/manifest-local.json",
-        "clientRoute": "http://localhost:3375/",
-        "//container": "Which adapter to use. The finsemble-electron-adapter Adapter or Openfin. Valid values are electron and openfin. Default: electron .",
-        "container": "electron",
-        "//electronDebug": "Whether to start the finsemble-electron-adapter in debug mode. Default: true.",
-        "electronDebug": true,
-        "//breakpointOnStart": "Whether to pause finsemble-electron-adapter when it starts. Default: false.",
-        "breakpointOnStart": false
-    },
-    "production": {
-        "//serverPort": "Port number for your server.",
-        "serverPort": 3375,
-        "//serverConfig": "Url for your application's manifest.",
-        "serverConfig": "http://localhost:3375/configs/openfin/manifest-local.json",
-        "clientRoute": "http://localhost:3375/",
-        "//container": "Which adapter to use. The finsemble-electron-adapter Adapter or Openfin. Valid values are electron and openfin. Default: electron .",
-        "container": "electron",
-        "//electronDebug": "Whether to start the finsemble-electron-adapter in debug mode. Default: true.",
-        "electronDebug": true,
-        "//breakpointOnStart": "Whether to pause finsemble-electron-adapter when it starts. Default: false.",
-        "breakpointOnStart": false
-    }
+	"development": {
+		"//serverPort": "Port number for your server.",
+		"serverPort": 3375,
+		"//serverConfig": "Url for your application's manifest.",
+		"serverConfig": "http://localhost:3375/configs/openfin/manifest-local.json",
+		"clientRoute": "http://localhost:3375/",
+		"//container": "Which adapter to use. The finsemble-electron-adapter Adapter or Openfin. Valid values are electron and openfin. Default: electron .",
+		"container": "electron",
+		"//electronDebug": "Whether to start the finsemble-electron-adapter in debug mode. Default: true.",
+		"electronDebug": true,
+		"//breakpointOnStart": "Whether to pause finsemble-electron-adapter when it starts. Default: false.",
+		"breakpointOnStart": false
+	},
+	"staging": {
+		"//serverPort": "Port number for your server.",
+		"serverPort": 5000,
+		"//serverConfig": "Url for your application's manifest.",
+		"serverConfig": "http://localhost:5000/configs/openfin/manifest-staging.json",
+		"clientRoute": "http://localhost:5000/",
+		"//container": "Which adapter to use. The finsemble-electron-adapter Adapter or Openfin. Valid values are electron and openfin. Default: electron .",
+		"container": "electron",
+		"//electronDebug": "Whether to start the finsemble-electron-adapter in debug mode. Default: true.",
+		"electronDebug": true,
+		"//breakpointOnStart": "Whether to pause finsemble-electron-adapter when it starts. Default: false.",
+		"breakpointOnStart": false
+	},
+	"production": {
+		"//serverPort": "Port number for your server.",
+		"serverPort": 3375,
+		"//serverConfig": "Url for your application's manifest.",
+		"serverConfig": "https://watson-finsemble.s3.eu-west-2.amazonaws.com/configs/openfin/manifest-local.json",
+		"clientRoute": "https://watson-finsemble.s3.eu-west-2.amazonaws.com/",
+		"//container": "Which adapter to use. The finsemble-electron-adapter Adapter or Openfin. Valid values are electron and openfin. Default: electron .",
+		"container": "electron",
+		"//electronDebug": "Whether to start the finsemble-electron-adapter in debug mode. Default: true.",
+		"electronDebug": true,
+		"//breakpointOnStart": "Whether to pause finsemble-electron-adapter when it starts. Default: false.",
+		"breakpointOnStart": false
+	}
 }
