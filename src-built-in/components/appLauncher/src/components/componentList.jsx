@@ -1,12 +1,15 @@
 /*!
-* Copyright 2017 by ChartIQ, Inc.
-* All rights reserved.
-*/
+ * Copyright 2017 by ChartIQ, Inc.
+ * All rights reserved.
+ */
 /**
  * This is the list of all components in the appLauncher.
  */
 import React from "react";
-import { getStore, Actions as appLauncherActions } from "../stores/appLauncherStore";
+import {
+	getStore,
+	Actions as appLauncherActions
+} from "../stores/appLauncherStore";
 import { FinsembleMenuSection } from "@chartiq/finsemble-react-controls";
 import ComponentItem from "./componentItem";
 
@@ -18,7 +21,8 @@ export default class appLauncherContainer extends React.Component {
 
 		this.state = {
 			componentList: {},
-			pinnedComponents: []
+			pinnedComponents: [],
+			monitorHeight: "100%"
 		};
 		this.bindCorrectContext();
 		this.domNeedsUpdating = false;
@@ -28,6 +32,7 @@ export default class appLauncherContainer extends React.Component {
 		this.onPinsUpdate = this.onPinsUpdate.bind(this);
 		this.updateDom = this.updateDom.bind(this);
 		this.buildComponentItem = this.buildComponentItem.bind(this);
+		this.getWindowHeight = this.getWindowHeight.bind(this);
 	}
 
 	onComponentListUpdate(err, data) {
@@ -36,7 +41,6 @@ export default class appLauncherContainer extends React.Component {
 		this.setState({
 			componentList: data.value
 		});
-
 	}
 
 	onPinsUpdate(err, data) {
@@ -50,6 +54,8 @@ export default class appLauncherContainer extends React.Component {
 			FSBL.Clients.Logger.debug("appLauncher componentDidUpdate updateDom");
 			this.updateDom();
 			this.domNeedsUpdating = false;
+			FSBL.Clients.WindowClient.fitToDOM();
+			// this.getWindowHeight();
 		}
 	}
 
@@ -57,32 +63,55 @@ export default class appLauncherContainer extends React.Component {
 		FSBL.Clients.WindowClient.fitToDOM(
 			{
 				maxHeight: 500
-			}, function () { });
+			},
+			function() {}
+		);
 	}
 
 	setInitialState() {
 		let self = this;
-		appLauncherStore.getValue({ field: "componentList" }, function (err, data) {
+		appLauncherStore.getValue({ field: "componentList" }, function(err, data) {
 			self.setState({
 				componentList: data
 			});
 		});
-		appLauncherStore.getValue({ field: "pins" }, function (err, data) {
+		appLauncherStore.getValue({ field: "pins" }, function(err, data) {
 			self.setState({
 				pinnedComponents: data
 			});
 		});
 	}
-	componentWillMount() {
+	componentDidMount() {
 		appLauncherStore = getStore();
 		this.setInitialState();
-		appLauncherStore.addListener({ field: "componentList" }, this.onComponentListUpdate);
+		appLauncherStore.addListener(
+			{ field: "componentList" },
+			this.onComponentListUpdate
+		);
 		appLauncherStore.addListener({ field: "pins" }, this.onPinsUpdate);
+		this.getWindowHeight();
 	}
+
 	componentWillUnmount() {
-		appLauncherStore.removeListener({ field: "componentList" }, this.onComponentListUpdate);
+		appLauncherStore.removeListener(
+			{ field: "componentList" },
+			this.onComponentListUpdate
+		);
 		appLauncherStore.removeListener({ field: "pins" }, this.onPinsUpdate);
 	}
+
+	getWindowHeight() {
+		FSBL.Clients.LauncherClient.getMonitorInfo({}).then(
+			({ data: { availableRect } }) => {
+				const { height } = availableRect;
+				const monitorHeight = height - height * 0.1;
+				console.log(monitorHeight + "/////////");
+				this.setState({ monitorHeight });
+				FSBL.Clients.WindowClient.fitToDOM();
+			}
+		);
+	}
+
 	launchComponent(component, params, cb) {
 		if (component.dontHideSelf) {
 			delete component.dontHideSelf;
@@ -101,12 +130,10 @@ export default class appLauncherContainer extends React.Component {
 			}
 		} else {
 			if (component.component.windowGroup) {
-				params.groupName = component.component.windowGroup
+				params.groupName = component.component.windowGroup;
 			}
 			appLauncherActions.launchComponent(component, params, cb);
 		}
-
-
 	}
 	togglePin(component) {
 		appLauncherActions.togglePin(component);
@@ -119,12 +146,14 @@ export default class appLauncherContainer extends React.Component {
 		let displayName = key;
 		let isPinned = false;
 
-		if ((!config.window ||
-			!config.foreign ||
-			!config.foreign.components ||
-			!config.foreign.components["App Launcher"] ||
-			!config.foreign.components["App Launcher"].launchableByUser) &&
-			!config.group) {
+		if (
+			(!config.window ||
+				!config.foreign ||
+				!config.foreign.components ||
+				!config.foreign.components["App Launcher"] ||
+				!config.foreign.components["App Launcher"].launchableByUser) &&
+			!config.group
+		) {
 			return;
 		}
 
@@ -140,14 +169,17 @@ export default class appLauncherContainer extends React.Component {
 			displayName = config.component.displayName;
 		}
 
-		return (<ComponentItem
-			isPinned={isPinned}
-			key={key}
-			name={displayName}
-			component={config}
-			itemAction={this.launchComponent}
-			togglePin={this.togglePin}
-			isUserDefined={isUserDefined} />);
+		return (
+			<ComponentItem
+				isPinned={isPinned}
+				key={key}
+				name={displayName}
+				component={config}
+				itemAction={this.launchComponent}
+				togglePin={this.togglePin}
+				isUserDefined={isUserDefined}
+			/>
+		);
 	}
 
 	renderComponentsList() {
@@ -160,23 +192,26 @@ export default class appLauncherContainer extends React.Component {
 			const isUserDefined = Boolean(component && component.isUserDefined);
 			return this.buildComponentItem({ i, key, isUserDefined });
 		});
-		return (<FinsembleMenuSection
-			maxHeight={350} scrollable={true}
-			className="ComponentList menu-primary">
-			{
-				componentList.length ? componentList :
-					<p> No components loaded.
-						Make sure to check ./src/components.json
-						to make sure you've set everything up correctly.</p>
-			}
-		</FinsembleMenuSection>);
+		return (
+			<FinsembleMenuSection
+				maxHeight={this.state.monitorHeight}
+				scrollable={true}
+				className="ComponentList menu-primary"
+			>
+				{componentList.length ? (
+					componentList
+				) : (
+					<p>
+						{" "}
+						No components loaded. Make sure to check ./src/components.json to
+						make sure you've set everything up correctly.
+					</p>
+				)}
+			</FinsembleMenuSection>
+		);
 	}
 
 	render() {
-		return (
-			this.state.componentList
-				? this.renderComponentsList()
-				: <div></div>
-		);
+		return this.state.componentList ? this.renderComponentsList() : <div></div>;
 	}
 }
