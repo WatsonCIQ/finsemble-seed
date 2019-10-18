@@ -2,9 +2,9 @@
 	"devtools_port": 9090,
 	"startup_app": {
 		"name": "ChartIQ Local",
-		"url": "https://watson-finsemble.s3.eu-west-2.amazonaws.com//finsemble/components/system/serviceManager/serviceManager.html",
+		"url": "http://localhost:80/finsemble/components/system/serviceManager/serviceManager.html",
 		"uuid": "Finsemble",
-		"applicationIcon": "https://watson-finsemble.s3.eu-west-2.amazonaws.com//assets/img/Finsemble_Taskbar_Icon.png",
+		"applicationIcon": "http://localhost:80/assets/img/Finsemble_Taskbar_Icon.png",
 		"defaultTop": 0,
 		"defaultLeft": 0,
 		"showTaskbarIcon": true,
@@ -20,7 +20,7 @@
 		},
 		"alwaysOnTop": false
 	},
-	"splashScreenImage": "https://watson-finsemble.s3.eu-west-2.amazonaws.com//assets/img/FinsembleSplash.png",
+	"splashScreenImage": "http://localhost:80/assets/img/FinsembleSplash.png",
 	"runtime": {
 		"arguments": "--noerrdialogs  --v=4 --no-sandbox  --enable-crash-reporting --framestrategy=frames --winhttp-proxy-resolver",
 		"version": "8.56.28.36",
@@ -34,14 +34,14 @@
 	"shortcut": {
 		"company": "ChartIQ",
 		"description": "ChartIQ Local",
-		"icon": "https://watson-finsemble.s3.eu-west-2.amazonaws.com//assets/img/Finsemble_Taskbar_Icon.png",
+		"icon": "http://localhost:80/assets/img/Finsemble_Taskbar_Icon.ico",
 		"name": "ChartIQ - LOCAL",
 		"target": ["desktop", "start-menu"],
 		"force": false,
 		"startMenuRootFolder": "ChartIQ Local"
 	},
 	"dialogSettings": {
-		"logo": "https://watson-finsemble.s3.eu-west-2.amazonaws.com//assets/img/ciq-banner-100x25.png",
+		"logo": "http://localhost:80/assets/img/ciq-banner-100x25.png",
 		"bgColor": 4280109424,
 		"textColor": 4293521652,
 		"progressBarBgColor": 4294967295,
@@ -63,7 +63,7 @@
 		}
 	],
 	"finsemble": {
-		"applicationRoot": "https://watson-finsemble.s3.eu-west-2.amazonaws.com/",
+		"applicationRoot": "http://localhost:80",
 		"moduleRoot": "$applicationRoot/finsemble",
 		"servicesRoot": "$applicationRoot/finsemble/services",
 		"notificationURL": "$applicationRoot/components/notification/notification.html",

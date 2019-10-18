@@ -27,9 +27,9 @@
 	},
 	"production": {
 		"//serverPort": "Port number for your server.",
-		"serverPort": 3375,
+		"serverPort": 80,
 		"//serverConfig": "Url for your application's manifest.",
-		"serverConfig": "https://watson-finsemble.s3.eu-west-2.amazonaws.com/configs/openfin/manifest-local.json",
+		"serverConfig": "https://watson-finsemble.s3.eu-west-2.amazonaws.com/configs/openfin/manifest-production.json",
 		"clientRoute": "https://watson-finsemble.s3.eu-west-2.amazonaws.com/",
 		"//container": "Which adapter to use. The finsemble-electron-adapter Adapter or Openfin. Valid values are electron and openfin. Default: electron .",
 		"container": "electron",
