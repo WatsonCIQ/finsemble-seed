@@ -1,1 +1,6 @@
-{}
+{
+    "ThemeBuilder": {
+        "output": "components/ThemeBuilder/ThemeBuilder",
+        "entry": "./src/components/ThemeBuilder/src/app.jsx"
+    }
+}
