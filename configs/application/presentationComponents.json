@@ -17,7 +17,8 @@
 			"component": {
 				"allowAdhoc": "@TODO",
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -49,7 +50,8 @@
 			"component": {
 				"allowAdhoc": "@TODO",
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -83,7 +85,8 @@
 			"component": {
 				"allowAdhoc": "@TODO",
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -116,7 +119,8 @@
 			"component": {
 				"allowAdhoc": "@TODO",
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -148,7 +152,8 @@
 			},
 			"component": {
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -182,7 +187,8 @@
 			},
 			"component": {
 				"spawnOnStartup": true,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -228,7 +234,8 @@
 					}
 				],
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -263,7 +270,8 @@
 			},
 			"component": {
 				"spawnOnStartup": false,
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -297,7 +305,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -330,7 +339,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -367,7 +377,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": true
+				"spawnOnStartup": true,
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"clients": {
@@ -409,7 +420,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": true
+				"spawnOnStartup": true,
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"clients": {
@@ -451,7 +463,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": false
+				"spawnOnStartup": false,
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"clients": {
@@ -493,7 +506,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -526,10 +540,7 @@
 				"right": 0,
 				"position": "available",
 				"autoShow": true,
-				"dockable": [
-					"top",
-					"bottom"
-				],
+				"dockable": ["top", "bottom"],
 				"maxHeight": 39,
 				"minHeight": 39,
 				"minWidth": 300,
@@ -548,7 +559,8 @@
 				"spawnOnStartup": true,
 				"spawnOnAllMonitors": false,
 				"canMinimize": false,
-				"canMaximize": false
+				"canMaximize": false,
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -583,7 +595,8 @@
 				"ephemeral": true
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -619,7 +632,8 @@
 			},
 			"component": {
 				"category": "system",
-				"spawnOnStartup": true
+				"spawnOnStartup": true,
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -665,7 +679,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -696,7 +711,8 @@
 				"height": 700
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {
@@ -732,7 +748,8 @@
 				}
 			},
 			"component": {
-				"category": "system"
+				"category": "system",
+				"preload": ["$applicationRoot/preloads/dynamicThemeColor.js"]
 			},
 			"foreign": {
 				"services": {

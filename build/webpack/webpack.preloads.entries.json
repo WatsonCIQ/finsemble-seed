@@ -6,5 +6,9 @@
 	"zoom": {
 		"output": "preloads/zoom",
 		"entry": "./src-built-in/preloads/zoom.js"
+	},
+	"dynamicThemeColor": {
+		"output": "preloads/dynamicThemeColor",
+		"entry": "./src/preloads/dynamicThemeColor.js"
 	}
 }
