@@ -1,42 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import * as theme from "../../theme.json";
+import React, { useState } from "react";
+import * as themeJSON from "../../theme.json";
 import CSSEditor from "./CSSEditor";
-
-const getAllRootVars = styleSheets =>
-	// I cannot take credit for this! Searches for all the css variables in the :root object
-	Array.from(styleSheets)
-		.filter(
-			sheet =>
-				sheet.href === null || sheet.href.startsWith(window.location.origin)
-		)
-		.reduce(
-			(acc, sheet) =>
-				(acc = [
-					...acc,
-					...Array.from(sheet.cssRules).reduce(
-						(def, rule) =>
-							(def =
-								rule.selectorText === ":root"
-									? [
-											...def,
-											...Array.from(rule.style).filter(name =>
-												name.startsWith("--")
-											)
-									  ]
-									: def),
-						[]
-					)
-				]),
-			[]
-		);
+import Export from "./Export";
 
 const ThemeBuilderComponent = () => {
-	const [theme, setTheme] = useState(theme);
-	useEffect(() => {
-		if (document) {
-			// console.log(getAllRootVars(document.styleSheets));
-		}
-	});
+	const [theme, setTheme] = useState(themeJSON);
+
 	const updateThemeValue = (category, cssVariable, newValue) => {
 		const updatedTheme = { ...theme };
 		updatedTheme[category][cssVariable] = newValue;
@@ -46,7 +15,7 @@ const ThemeBuilderComponent = () => {
 	// could the CSS keep the state instead?
 
 	const themeInfo = Object.entries(theme);
-	console.log(themeInfo);
+	console.log(`themeInfo ${themeInfo}`);
 	return (
 		<div>
 			{themeInfo.map(([category, values]) => (
@@ -65,6 +34,7 @@ const ThemeBuilderComponent = () => {
 					))}
 				</ul>
 			))}
+			<Export></Export>
 		</div>
 	);
 };

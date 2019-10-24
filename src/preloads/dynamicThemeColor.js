@@ -8,7 +8,7 @@ const runDynamicColor = () => {
 		} else {
 			console.log(`themeBuilder Response: ${JSON.stringify(response)}`);
 			const { cssVariable = null, cssValue = null } = response.data;
-			cssValue && cssValue
+			cssVariable && cssValue
 				? document.documentElement.style.setProperty(cssVariable, cssValue)
 				: console.error(
 						`empty value for either: cssVariable - ${cssVariable} OR cssValue - ${cssValue}`
