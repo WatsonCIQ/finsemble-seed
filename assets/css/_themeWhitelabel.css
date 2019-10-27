@@ -1,11 +1,10 @@
 @import url("./fonts/Roboto/Roboto-Definition.css");
-@import url("_colorPalette.css");
 :root {
 	/* Theme Variables:  Use these variables to make broad-sweeping changes to the colors and fonts. */
-
+	--ThemeWhitelabel: 0px;
 	/* Font Settings */
 	--font-family: "Roboto", sans-serif;
-	--primary-font-color: white;
+	--primary-font-color: var(--pictet-grey-darker);
 	--secondary-font-color: black;
 	--primary-font-weight: 300;
 	--secondary-font-weight: 500;
@@ -16,7 +15,8 @@
 	--pictet-plum: #5f143c;
 	--pictet-bordeaux: #a52828;
 	--pictet-grey: #646464;
-	--pictet-grey: #646464;
+	--pictet-grey-darker: #383838;
+	--pictet-grey-lighter: #d9d9d9;
 	--pictet-teal: #007373;
 	--pictet-orange: #d45d26;
 	--pictet-green: #38612c;
@@ -73,17 +73,16 @@
 	--red: var(--red4);
 
 	/* Color Theme */
-	--primary-accent-color: var(--blue6);
-	--secondary-accent-color: var(--blue7);
-	--tertiary-accent-color: var(--blue3);
+	--primary-accent-color: var(--pictet-bordeaux);
+	--secondary-accent-color: var(--pictet-teal);
+	--tertiary-accent-color: var(--pictet-plum);
 	--primary-negative-color: var(--red5);
 	--secondary-negative-color: var(--red1);
 	--tertiary-negative-color: var(--red7);
-	--primary-background-color: var(--pictet-grey);
-	--secondary-background-color: var(--slate6);
+	--primary-background-color: var(--pictet-grey-lighter);
+	--secondary-background-color: var(--pictet-teal);
 	--tertiary-background-color: var(--slate5);
-	--scrollbar-color: var(--gray);
-	--testing-color: rgb(234, 56, 216);
+	--scrollbar-color: var(--pictet-grey);
 
 	/* App Catalog */
 	--catalog-font-color: var(--primary-font-color);
@@ -111,8 +110,8 @@
 		--secondary-background-color
 	);
 	--appMenu-background-color: var(--slate4);
-	--appMenu-actions-menu-background-color: var(--secondary-background-color);
-	--appMenu-app-item-hover-background-color: var(--slate3);
+	--appMenu-actions-menu-background-color: var(--tertiary-background-color);
+	--appMenu-app-item-hover-background-color: var(--tertiary-accent-color);
 	--appMenu-app-item-bottom-border-color: rgba(98, 116, 132, 0.4);
 	--appMenu-app-favorite-color: var(--yellow3);
 	--appMenu-app-icon-color: var(--tertiary-accent-color);
@@ -262,7 +261,7 @@
 	--menu-background-color: var(--secondary-background-color);
 	--menu-actions-background-color: var(--slate4);
 	--menu-actions-hover-color: var(--slate3);
-	--menu-content-background-color: var(--secondary-background-color);
+	--menu-content-background-color: var(--primary-background-color);
 	--menu-content-hover-color: var(--slate3);
 	--menu-pin-border-color: var(--secondary-accent-color);
 	--menu-pin-background-color: var(--primary-accent-color);
