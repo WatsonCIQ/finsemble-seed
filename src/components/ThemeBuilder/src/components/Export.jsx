@@ -1,84 +1,60 @@
 import React, { useState, useEffect } from "react";
 
-const getAllRootVars = styleSheets =>
-	// I cannot take credit for this! Searches for all the css variables in the :root object
+const getCssTextFromStyleSheets = styleSheets =>
 	Array.from(styleSheets)
 		.filter(
 			sheet =>
+				// TODO: we need to be able to add more domains here so this needs to be modified, it will only take local domains so far
 				sheet.href === null || sheet.href.startsWith(window.location.origin)
 		)
 		.reduce(
-			(acc, sheet) =>
-				(acc = [
-					...acc,
-					...Array.from(sheet.cssRules).reduce(
-						(def, rule) =>
-							(def =
-								rule.selectorText === ":root"
-									? [
-											...def,
-											...Array.from(rule.style).filter(name =>
-												name.startsWith("--")
-											)
-									  ]
-									: def),
-						[]
-					)
-				]),
+			// we want to loop through and get all the cssRules > cssText and if it includes "--" then add it to the list
+			//  we can later run a split on this code and eliminate the ones that are not variables
+			(accum, sheet) => {
+				const cssText = Array.from(sheet.cssRules)
+					.filter(rules => rules.cssText.includes(":root"))
+					.map(rules => rules.cssText);
+				return cssText.length ? [...accum, ...cssText] : accum;
+			},
 			[]
 		);
 
-const getCssText = Array.from(styleSheets)
-	.filter(
-		sheet =>
-			// TODO: we need to be able to add more domains here so this needs to be modified, it will only take local domains so far
-			sheet.href === null || sheet.href.startsWith(window.location.origin)
-	)
-	.reduce(
-		// we want to loop through and get all the cssRules > cssText and if it includes "--" then add it to the list
-		//  we can later run a split on this code and eliminate the ones that are not variables
-		(acc, sheet) =>
-			(acc = [
-				...acc,
-				...Array.from(sheet.cssRules).reduce(
-					(def, rule) =>
-						(def =
-							rule.selectorText === ":root"
-								? [
-										...def,
-										...Array.from(rule.style).filter(name =>
-											name.startsWith("--")
-										)
-								  ]
-								: def),
-					[]
-				)
-			]),
-		[]
-	);
+const rootCssOutput = () => {
+	// getCssTextFromStyleSheets is an array of cssText values
+
+	const makeCssTextString = getCssTextFromStyleSheets(
+		document.styleSheets
+	).reduce((prev, cssString) => {
+		let css;
+		css = cssString.replace(/:root \{/gi, "");
+		css = css.replace(/\}/g, " ");
+		return prev + css;
+	}, "");
+	const removeDuplicateCssValues = new Set(makeCssTextString.split(";"));
+	return `:root { ${Array.from(removeDuplicateCssValues).join(";")} }`;
+};
 
 const Export = () => {
-	const [root, setRoot] = useState([]);
+	// need to wait for the document
 	useEffect(() => {
 		if (document) {
-			const cssVariablesAndValues = getAllRootVars(document.styleSheets).map(
-				cssVar => [
-					cssVar,
-					getComputedStyle(document.documentElement)
-						.getPropertyValue(cssVar)
-						.trim()
-				]
+			// this updates the stylesheet to match the var color of yellow
+			const updateStyleSheetValue = document.styleSheets[6].cssRules[0].styleMap.set(
+				"--titleBar-background-inactive-color",
+				"var(--plum)"
 			);
-			setRoot(cssVariablesAndValues);
+			// returns a multidimensional array with all the css rules
+			const getCssRulesAsArray = Array.from(
+				document.styleSheets[6].cssRules[0].styleMap.entries()
+			);
+
+			// get the :root object with all the styles formatted as css - specify the stylesheet and where the rules are
+			const rootCssAsString = document.styleSheets[6].cssRules[0].cssText;
 		}
-	}, []);
+	});
 	return (
 		<div>
-			{root.map(([cssVar, val], index) => (
-				<p key={cssVar + index}>
-					{cssVar}: {val};
-				</p>
-			))}
+			<button onClick={() => console.log(rootCssOutput())}>export</button>
 		</div>
 	);
 };

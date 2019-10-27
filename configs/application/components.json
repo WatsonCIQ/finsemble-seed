@@ -186,9 +186,9 @@
 				}
 			}
 		},
-		"ThemeBuilder": {
+		"WhitelabelGenerator": {
 			"window": {
-				"url": "$applicationRoot/components/ThemeBuilder/ThemeBuilder.html",
+				"url": "http://127.0.0.1:3000",
 				"frame": false,
 				"resizable": true,
 				"autoShow": true,
@@ -212,12 +212,12 @@
 						"launchableByUser": true
 					},
 					"Window Manager": {
-						"title": "ThemeBuilder",
+						"title": "Whitelabel Generator",
 						"FSBLHeader": true,
 						"persistWindowState": true
 					},
 					"Toolbar": {
-						"iconClass": "ThemeBuilder"
+						"iconClass": "WhitelabelGenerator"
 					}
 				}
 			}

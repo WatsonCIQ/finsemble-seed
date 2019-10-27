@@ -12,14 +12,14 @@
 	--tertiary-font-weight: bold;
 
 	/* Color Palette */
-	--blue: #0a2d6e;
-	--plum: #5f143c;
-	--bordeaux: #a52828;
-	--grey: #646464;
-
-	--teal: #007373;
-	--orange: #d45d26;
-	--green: #38612c;
+	--pictet-blue: #0a2d6e;
+	--pictet-plum: #5f143c;
+	--pictet-bordeaux: #a52828;
+	--pictet-grey: #646464;
+	--pictet-grey: #646464;
+	--pictet-teal: #007373;
+	--pictet-orange: #d45d26;
+	--pictet-green: #38612c;
 
 	--slate1: #7b98b3;
 	--slate2: #67829a;
@@ -79,7 +79,7 @@
 	--primary-negative-color: var(--red5);
 	--secondary-negative-color: var(--red1);
 	--tertiary-negative-color: var(--red7);
-	--primary-background-color: var(--slate7);
+	--primary-background-color: var(--pictet-grey);
 	--secondary-background-color: var(--slate6);
 	--tertiary-background-color: var(--slate5);
 	--scrollbar-color: var(--gray);

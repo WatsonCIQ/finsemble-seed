@@ -62,7 +62,6 @@ const CSSEditor = ({
 				}
 				value={cssValue}
 			></input>
-			{/* <img src="/assets/" /> */}
 		</div>
 	);
 };
