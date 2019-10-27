@@ -1,7 +1,5 @@
 const runDynamicColor = () => {
-	FSBL.Clients.RouterClient.addPubSubResponder("themeBuilder", {});
-
-	FSBL.Clients.RouterClient.subscribe("themeBuilder", (error, response) => {
+	FSBL.Clients.RouterClient.addListener("themeBuilder", (error, response) => {
 		if (error) {
 			console.log(`themeBuilder Error: ${JSON.stringify(error)}`);
 		} else {
